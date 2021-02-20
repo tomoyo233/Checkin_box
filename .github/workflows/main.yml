@@ -20,7 +20,7 @@ jobs:
         run: |
           git config --global user.name  github-actions
           git config --global user.email github-actions@github.com
-          git remote add upstream https://github.com/HualuozhE/genshin-impact-helper.git
+          git remote add upstream https://github.com/HualuozhE/Checkin_box.git
           git pull upstream master --allow-unrelated-histories
           git push origin master
       - name: Set up python
