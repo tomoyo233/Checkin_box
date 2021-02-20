@@ -4,6 +4,8 @@ import sys
 
 cookie = sys.argv[1]
 
+print(cookie)
+
 # tgbot机器人配置,为空为不启用
 bottoken = ''
 chatid = ''
@@ -82,7 +84,6 @@ def tg_bot(text):
 
 
 if __name__ == '__main__':
-    print(cookie)
     if cookie:
         zodgame()
     else:
