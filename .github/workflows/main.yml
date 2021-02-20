@@ -37,4 +37,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
           ls -a
-          python3 ./zodgame/zodgame.py ${{ secrets.COOKIE }}
+          python3 ./zodgame/zodgame.py '${{ secrets.COOKIE }}'
