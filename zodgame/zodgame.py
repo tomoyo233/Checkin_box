@@ -4,6 +4,7 @@ import sys
 
 cookie = sys.argv[1]
 
+print('测试')
 print(cookie)
 
 # tgbot机器人配置,为空为不启用
