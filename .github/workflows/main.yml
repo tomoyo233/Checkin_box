@@ -15,12 +15,6 @@ jobs:
     # if: github.ref == 'refs/heads/master'
 
     steps:
-      - name: Checkout master
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: master
-
       - name: Auto merge
         if: ${{ env.ALLOW_MERGE != 'false' }}
         run: |
@@ -41,6 +35,6 @@ jobs:
       - name: Run sign
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install requests
           ls -a
           echo '${{ secrets.COOKIE }}' | tr '#' '\n' | sed 's/$/&#${{ secrets.SCKEY }}/g' | xargs -I {} sh -c 'echo "{}" | python3 ./zodgame/zodgame.py'
