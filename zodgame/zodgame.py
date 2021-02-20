@@ -78,6 +78,10 @@ def tg_bot(text):
 
 
 if __name__ == '__main__':
+    secret = input().strip().split('#')
+    secret.append('')
+    cookie = secret[0]
+    sckey = secret[1]
     if cookie:
         zodgame()
     else:
