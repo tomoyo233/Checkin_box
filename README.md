@@ -13,7 +13,7 @@ zodgame
 
 ![new-secret.png](https://i.loli.net/2020/10/28/sxTuBFtRvzSgUaA.png)
 
-- 建立名为`COOKIE`的 secret，值为`步骤2`中复制的`Cookie`内容，最后点击`Add secret`
+- 建立名为`COOKIE`的 secret，值为`步骤1`中复制的`Cookie`内容，最后点击`Add secret`
 
 - secret名字必须为`COOKIE`！
 - secret名字必须为`COOKIE`！
