@@ -1,13 +1,8 @@
 import requests
 import re
+import sys
 
-secret = input().strip().split('#')
-secret.append('')
-cookie = secret[0]
-sckey = secret[1]
-
-print('数据')
-print(cookie)
+cookie = sys.argv[1]
 
 # tgbot机器人配置,为空为不启用
 bottoken = ''
@@ -87,6 +82,7 @@ def tg_bot(text):
 
 
 if __name__ == '__main__':
+    print(cookie)
     if cookie:
         zodgame()
     else:
