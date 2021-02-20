@@ -37,4 +37,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
           ls -a
-          echo '${{ secrets.COOKIE }}' | tr '#' '\n' | sed 's/$/&#${{ secrets.SCKEY }}/g' | xargs -I {} sh -c 'echo "{}" | python3 ./zodgame/zodgame.py'
+          python3 ./zodgame/zodgame.py ${{ secrets.COOKIE }}
