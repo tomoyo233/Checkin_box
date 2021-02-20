@@ -15,7 +15,20 @@ jobs:
     # if: github.ref == 'refs/heads/master'
 
     steps:
+      - name: Checkout master
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: master
 
+      - name: Auto merge
+        if: ${{ env.ALLOW_MERGE != 'false' }}
+        run: |
+          git config --global user.name  github-actions
+          git config --global user.email github-actions@github.com
+          git remote add upstream https://github.com/HualuozhE/genshin-impact-helper.git
+          git pull upstream master --allow-unrelated-histories
+          git push origin master
       - name: Set up python
         uses: actions/setup-python@v2
         with:
@@ -28,6 +41,6 @@ jobs:
       - name: Run sign
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install -r requirements.txt
           ls -a
-          echo '${{ secrets.COOKIE }}' | tr '#' '\n' | sed 's/$/&#${{ secrets.SCKEY }}/g' | xargs -I {} sh -c 'echo "{}" | python3 ./zodgame.py'
+          echo '${{ secrets.COOKIE }}' | tr '#' '\n' | sed 's/$/&#${{ secrets.SCKEY }}/g' | xargs -I {} sh -c 'echo "{}" | python3 ./zodgame/zodgame.py'
