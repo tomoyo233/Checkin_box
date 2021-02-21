@@ -1,7 +1,11 @@
 import requests
 import re
+import sys
 
-cookie = ''
+cookie = sys.argv[1]
+
+print('测试')
+print(cookie)
 
 # tgbot机器人配置,为空为不启用
 bottoken = ''
@@ -20,7 +24,8 @@ def get_user_info():
     user_url = 'https://zodgame.xyz/home.php?mod=spacecp&ac=credit'
     try:
         user_r = s.get(url=user_url, headers=headers)
-        user_page = user_r.text.encode(user_r.encoding).decode(user_r.apparent_encoding)
+        user_page = user_r.text.encode(
+            user_r.encoding).decode(user_r.apparent_encoding)
         # print(user_page)
         user_info_re = '<input type="hidden" name="formhash" value="(.*?)" />.*title="访问我的空间">(.*?)</a>.*</ul><ul class="creditl mtm bbda cl"><li class="xi1 cl"><em>.(.*?).</em>(.*?).&nbsp;'
         user_info = re.findall(user_info_re, user_page, re.S)
@@ -54,8 +59,10 @@ def zodgame():
             print("zodgame的cookie已过期")
         elif "恭喜" in page_text:
             s, formhash, username, points_name, points_num = get_user_info()
-            print('zodgame签到成功!\n用户:{}\n{}{}'.format(username, points_name, points_num))
-            tg_bot('zodgame签到成功!\n用户:{}\n{}{}'.format(username, points_name, points_num))
+            print('zodgame签到成功!\n用户:{}\n{}{}'.format(
+                username, points_name, points_num))
+            tg_bot('zodgame签到成功!\n用户:{}\n{}{}'.format(
+                username, points_name, points_num))
         elif '已经签到' in page_text:
             tg_bot('zodgame已经签到了')
             print('zodgame已经签到了')
